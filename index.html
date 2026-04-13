@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulce Mercado | Dulces Artesanales al Por Mayor en Chile</title>
+    <meta name="description" content="Proveedor mayorista de dulces artesanales en Santiago, Chile. Alfajores, bombones y chocolates al por mayor para revendedores, almacenes y emprendedores.">
+    <meta name="keywords" content="dulces al por mayor Chile, chocolates mayoristas, alfajores por mayor, proveedor de dulces, dulces artesanales mayorista Santiago">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.dulcemerchando.cl">
+    <meta property="og:title" content="Dulce Mercado | Dulces Artesanales al Por Mayor en Chile">
+    <meta property="og:description" content="Compra dulces artesanales al por mayor y revende con alta ganancia. Entrega en RM.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CL">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar-inner">
+            <a href="#" class="logo">
+                <span class="logo-word1">Dulce</span>
+                <span class="logo-word2">Mercado</span>
+            </a>
+            <div class="nav-links">
+                <a href="#productos">Productos</a>
+                <a href="#como-funciona">Cómo funciona</a>
+                <a href="#testimonios">Clientes</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <div class="nav-right">
+                <button class="nav-cart-btn" onclick="openCart()" aria-label="Carrito">
+                    <i data-lucide="shopping-bag" style="width:19px;height:19px;"></i>
+                    <span class="nav-badge" id="navBadge">0</span>
+                </button>
+                <button class="nav-mobile-btn" onclick="document.getElementById('productos').scrollIntoView({behavior:'smooth'})" aria-label="Menú">
+                    <i data-lucide="menu" style="width:22px;height:22px;"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-eyebrow reveal">
+                    <span class="hero-eyebrow-dot"></span>
+                    Venta mayorista — Solo Región Metropolitana
+                </div>
+                <h1 class="reveal reveal-d1">
+                    Compra dulces al por mayor y <em>revende con alta ganancia</em>
+                </h1>
+                <p class="hero-desc reveal reveal-d2">
+                    Suministramos alfajores, bombones y chocolates artesanales a almacenes, minimarkets y emprendedores. Producto de calidad que se vende solo.
+                </p>
+                <div class="hero-btns reveal reveal-d3">
+                    <a href="#productos" class="btn btn-dark">
+                        Ver productos
+                        <i data-lucide="arrow-down" style="width:17px;height:17px;"></i>
+                    </a>
+                    <a href="#como-funciona" class="btn btn-ghost">
+                        Cómo funciona
+                    </a>
+                </div>
+                <div class="hero-proof reveal reveal-d4">
+                    <div class="hero-proof-item">
+                        <i data-lucide="truck" style="width:15px;height:15px;"></i>
+                        Despacho 24-48h
+                    </div>
+                    <div class="hero-proof-item">
+                        <i data-lucide="shield-check" style="width:15px;height:15px;"></i>
+                        Pago seguro
+                    </div>
+                    <div class="hero-proof-item">
+                        <i data-lucide="package" style="width:15px;height:15px;"></i>
+                        Desde 20 uds.
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual reveal reveal-d2">
+                <div class="hero-img-wrap">
+                    <img src="https://picsum.photos/seed/artisan-sweets-tray-2024/640/512.jpg"
+                         alt="Bandeja de dulces artesanales al por mayor"
+                         class="hero-img" loading="eager">
+                </div>
+                <div class="hero-frame"></div>
+                <div class="hero-float">
+                    <div class="hero-float-icon">
+                        <i data-lucide="trending-up" style="width:20px;height:20px;"></i>
+                    </div>
+                    <div>
+                        <strong>+120 clientes activos</strong>
+                        <span>revendiendo en RM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUE PROP -->
+    <section class="value-section" id="beneficios">
+        <div class="container">
+            <div class="value-header">
+                <div class="eyebrow eyebrow-center reveal">¿Por qué elegirnos?</div>
+                <div class="deco-line reveal reveal-d1"></div>
+                <h2 class="heading-2 reveal reveal-d2" style="margin-top:20px;">Tu mejor proveedor de dulces mayoristas</h2>
+                <p class="body-lg reveal reveal-d3" style="margin-top:14px;">
+                    Trabajamos para que tu negocio sea rentable desde el día uno.
+                </p>
+            </div>
+            <div class="value-grid">
+                <div class="value-card reveal reveal-d1">
+                    <div class="value-icon">
+                        <i data-lucide="chef-hat" style="width:22px;height:22px;"></i>
+                    </div>
+                    <h3>100% Artesanal</h3>
+                    <p>Ingredientes de primera calidad con receta propia que destaca en cualquier vitrina.</p>
+                </div>
+                <div class="value-card reveal reveal-d2">
+                    <div class="value-icon">
+                        <i data-lucide="repeat" style="width:22px;height:22px;"></i>
+                    </div>
+                    <h3>Alta Rotación</h3>
+                    <p>Sabores probados en el mercado local con demanda comprobada y venta rápida.</p>
+                </div>
+                <div class="value-card reveal reveal-d3">
+                    <div class="value-icon">
+                        <i data-lucide="boxes" style="width:22px;height:22px;"></i>
+                    </div>
+                    <h3>Formato Mayorista</h3>
+                    <p>Bandejas y cajas listas para revender con presentación profesional.</p>
+                </div>
+                <div class="value-card reveal reveal-d4">
+                    <div class="value-icon">
+                        <i data-lucide="zap" style="width:22px;height:22px;"></i>
+                    </div>
+                    <h3>Entrega Rápida</h3>
+                    <p>Despacho en 24 a 48 horas dentro de la Región Metropolitana.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section class="catalog-section" id="productos">
+        <div class="container">
+            <div class="catalog-top">
+                <div>
+                    <div class="eyebrow reveal">Catálogo mayorista</div>
+                    <h2 class="heading-2 reveal reveal-d1" style="margin-top:14px;">Elige tus productos</h2>
+                    <p class="body-lg reveal reveal-d2" style="margin-top:10px;">
+                        Precios con IVA incluido. Listos para revender.
+                    </p>
+                </div>
+            </div>
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="steps-section" id="como-funciona">
+        <div class="container">
+            <div class="steps-header">
+                <div class="eyebrow reveal" style="color:var(--gold-400);">Proceso simple</div>
+                <h2 class="heading-2 reveal reveal-d1" style="color:var(--warm-200);margin-top:14px;">Cómo empezar a revender</h2>
+                <p class="body-lg reveal reveal-d2" style="margin-top:10px;color:var(--brown-400);">
+                    En 4 pasos tienes tus dulces listos para vender.
+                </p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card reveal reveal-d1">
+                    <div class="step-num">1</div>
+                    <h3>Elige productos</h3>
+                    <p>Revisa el catálogo y selecciona los packs que mejor se adapten a tu negocio.</p>
+                </div>
+                <div class="step-card reveal reveal-d2">
+                    <div class="step-num">2</div>
+                    <h3>Compra al por mayor</h3>
+                    <p>Paga de forma segura online con tarjeta o transferencia electrónica.</p>
+                </div>
+                <div class="step-card reveal reveal-d3">
+                    <div class="step-num">3</div>
+                    <h3>Recibe en tu local</h3>
+                    <p>Te despachamos en 24-48h directamente en la Región Metropolitana.</p>
+                </div>
+                <div class="step-card reveal reveal-d4">
+                    <div class="step-num">4</div>
+                    <h3>Revende y gana</h3>
+                    <p>Ubica los productos en tu local y genera ganancias con cada venta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="test-section" id="testimonios">
+        <div class="container">
+            <div class="test-header">
+                <div class="eyebrow eyebrow-center reveal">Clientes reales</div>
+                <div class="deco-line reveal reveal-d1"></div>
+                <h2 class="heading-2 reveal reveal-d2" style="margin-top:20px;">Lo que dicen quienes ya revenden</h2>
+                <p class="body-lg reveal reveal-d3" style="margin-top:10px;">
+                    Emprendedores y comerciantes de la RM confían en nosotros.
+                </p>
+            </div>
+            <div class="test-grid">
+                <div class="test-card reveal reveal-d1">
+                    <div class="test-stars">
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                    </div>
+                    <p class="test-text">Llevo 6 meses comprando alfajores y bombones. La rotación es increíble, casi no me queda stock. Los clientes siempre preguntan cuándo llega lo nuevo.</p>
+                    <div class="test-author">
+                        <img src="https://picsum.photos/seed/maria-g-face/88/88.jpg" alt="María González" class="test-avatar">
+                        <div>
+                            <div class="test-name">María González</div>
+                            <div class="test-role">Almacén — Puente Alto</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="test-card reveal reveal-d2">
+                    <div class="test-stars">
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                    </div>
+                    <p class="test-text">Empecé con 2 bandejas para probar. A la semana ya pedía el doble. La calidad se nota y la gente vuelve. Excelente margen de ganancia.</p>
+                    <div class="test-author">
+                        <img src="https://picsum.photos/seed/carlos-m-face/88/88.jpg" alt="Carlos Muñoz" class="test-avatar">
+                        <div>
+                            <div class="test-name">Carlos Muñoz</div>
+                            <div class="test-role">Minimarket — La Florida</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="test-card reveal reveal-d3">
+                    <div class="test-stars">
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                        <i data-lucide="star" style="width:15px;height:15px;fill:currentColor;"></i>
+                    </div>
+                    <p class="test-text">Los chocolates macizos son un éxito total en mi feria. La presentación de las cajas es profesional y eso le suma mucho al producto.</p>
+                    <div class="test-author">
+                        <img src="https://picsum.photos/seed/paula-s-face/88/88.jpg" alt="Paula Soto" class="test-avatar">
+                        <div>
+                            <div class="test-name">Paula Soto</div>
+                            <div class="test-role">Feriante — Lo Prado</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-section" id="contacto">
+        <div class="container">
+            <div class="cta-card reveal">
+                <h2 class="heading-2">Empieza a revender dulces artesanales hoy</h2>
+                <p class="body-lg">
+                    Compra tu primer pack mayorista y comprueba por qué más de 120 comerciantes en Santiago confían en nosotros.
+                </p>
+                <a href="#productos" class="btn-gold">
+                    Comprar ahora
+                    <i data-lucide="arrow-right" style="width:19px;height:19px;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" style="margin-bottom:4px;">
+                        <span class="logo-word1" style="color:var(--warm-300);">Dulce</span>
+                        <span class="logo-word2">Mercado</span>
+                    </div>
+                    <p>Proveedor mayorista de dulces artesanales en la Región Metropolitana, Chile.</p>
+                </div>
+                <div>
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#como-funciona">Cómo funciona</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="mailto:ventas@dulcemerchando.cl">ventas@dulcemerchando.cl</a></li>
+                        <li><a href="tel:+56912345678">+56 9 1234 5678</a></li>
+                        <li><a href="#">Santiago, RM — Chile</a></li>
+                        <li><a href="#">Lun a Vie: 9:00 – 18:00</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Dulce Mercado. Todos los derechos reservados.</span>
+                <span>Despacho exclusivo Región Metropolitana.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FAB CART -->
+    <button class="fab-cart" onclick="openCart()" aria-label="Carrito">
+        <i data-lucide="shopping-bag" style="width:22px;height:22px;"></i>
+        <span class="fab-badge" id="fabBadge">0</span>
+    </button>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <aside class="cart-sidebar" id="cartSidebar" role="dialog" aria-label="Carrito">
+        <div class="cart-head">
+            <h2>Tu carrito <span id="cartCount"></span></h2>
+            <button class="icon-btn" onclick="closeCart()" aria-label="Cerrar">
+                <i data-lucide="x" style="width:20px;height:20px;"></i>
+            </button>
+        </div>
+        <div class="cart-body" id="cartBody"></div>
+        <div class="cart-foot" id="cartFoot" style="display:none;">
+            <div class="cf-row"><span>Subtotal</span><span id="cfSubtotal">$0</span></div>
+            <div class="cf-row"><span>Despacho RM</span><span id="cfShip">$3.990</span></div>
+            <div class="cf-row total"><span>Total</span><span id="cfTotal">$0</span></div>
+            <button class="btn-checkout" onclick="openCheckout()">
+                <i data-lucide="credit-card" style="width:17px;height:17px;"></i>
+                Ir a pagar
+            </button>
+        </div>
+    </aside>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="modal-overlay" id="checkoutOverlay">
+        <div class="modal">
+            <button class="icon-btn" style="position:absolute;top:16px;right:16px;" onclick="closeCheckout()" aria-label="Cerrar">
+                <i data-lucide="x" style="width:20px;height:20px;"></i>
+            </button>
+            <h2>Datos de despacho</h2>
+            <p class="modal-sub">Completa tus datos para recibir tu pedido en la RM.</p>
+            <form id="checkoutForm" onsubmit="processPayment(event)" novalidate>
+                <div class="form-row">
+                    <div class="fg">
+                        <label for="cName">Nombre completo</label>
+                        <input type="text" id="cName" placeholder="Juan Pérez" required>
+                        <div class="fg-err" id="eName">Ingresa tu nombre</div>
+                    </div>
+                    <div class="fg">
+                        <label for="cPhone">Teléfono</label>
+                        <input type="tel" id="cPhone" placeholder="9 1234 5678" required>
+                        <div class="fg-err" id="ePhone">Ingresa un teléfono válido</div>
+                    </div>
+                </div>
+                <div class="fg">
+                    <label for="cEmail">Email</label>
+                    <input type="email" id="cEmail" placeholder="correo@ejemplo.cl" required>
+                    <div class="fg-err" id="eEmail">Ingresa un email válido</div>
+                </div>
+                <div class="fg">
+                    <label for="cAddr">Dirección de despacho</label>
+                    <input type="text" id="cAddr" placeholder="Av. Providencia 1234, depto 45" required>
+                    <div class="fg-err" id="eAddr">Ingresa tu dirección</div>
+                </div>
+                <div class="fg">
+                    <label for="cNotes">Notas (opcional)</label>
+                    <textarea id="cNotes" rows="2" placeholder="Instrucciones especiales de entrega..."></textarea>
+                </div>
+                <div class="checkout-total-bar">
+                    <span>Total a pagar:</span>
+                    <span id="coTotal">$0</span>
+                </div>
+                <button type="submit" class="btn-pay" id="btnPay">
+                    <i data-lucide="lock" style="width:17px;height:17px;"></i>
+                    Pagar de forma segura
+                </button>
+                <p class="pay-note">Pago simulado — Listo para integrar MercadoPago o Stripe</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- SUCCESS MODAL -->
+    <div class="modal-overlay success-modal" id="successOverlay">
+        <div class="modal">
+            <div class="success-check">
+                <i data-lucide="check" style="width:30px;height:30px;"></i>
+            </div>
+            <h2>¡Pedido recibido!</h2>
+            <p>Tu pedido fue registrado exitosamente. Te contactaremos a la brevedad para coordinar el despacho en la Región Metropolitana.</p>
+            <button class="btn-ok" onclick="closeSuccess()">Entendido</button>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast-box" id="toastBox"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
