@@ -4,9 +4,13 @@ Esta es una landing page para Dulce Mercado, un proveedor mayorista de dulces ar
 
 ## Estructura del Proyecto
 
-- `index.html`: Archivo principal HTML con la estructura de la página.
-- `css/styles.css`: Hoja de estilos CSS con todos los estilos de la página.
-- `js/script.js`: Archivo JavaScript con la lógica de la página, incluyendo el carrito de compras y funcionalidades interactivas.
+- **`index.html`**: Archivo principal HTML con la estructura de la página, incluyendo footer con enlaces a políticas legales e iconos sociales.
+- **`privacy.html`**: Página de Política de Privacidad.
+- **`terms.html`**: Página de Términos y Condiciones.
+- **`cookies.html`**: Página de Política de Cookies.
+- **`css/styles.css`**: Hoja de estilos CSS con todos los estilos de la página.
+- **`js/script.js`**: Archivo JavaScript con la lógica de la página, incluyendo el carrito de compras y funcionalidades interactivas.
+- **`README.md`**: Este archivo de documentación.
 
 ## Categorías de Organización
 
@@ -34,8 +38,13 @@ Esta es una landing page para Dulce Mercado, un proveedor mayorista de dulces ar
 
 ## Recursos Externos
 - Google Fonts: Cormorant Garamond y Outfit.
-- Lucide Icons: Para íconos vectoriales.
+- Lucide Icons: Para íconos vectoriales, incluyendo redes sociales.
 - Imágenes: URLs de Picsum para placeholders.
+
+## Políticas Legales
+- **Política de Privacidad**: Información sobre recopilación y uso de datos personales, conforme a la Ley 19.628 de Chile.
+- **Términos y Condiciones**: Condiciones de venta, envíos, pagos y responsabilidades.
+- **Política de Cookies**: Explicación del uso de cookies en el sitio web.
 
 ## Funcionalidades
 - Carrito de compras con persistencia.
@@ -43,6 +52,8 @@ Esta es una landing page para Dulce Mercado, un proveedor mayorista de dulces ar
 - Animaciones de entrada.
 - Diseño responsive.
 - Navegación suave.
+- Páginas legales accesibles desde el footer.
+- Iconos de redes sociales en el footer.
 
 ## Cómo Ejecutar
 Abre `index.html` en un navegador web moderno.
