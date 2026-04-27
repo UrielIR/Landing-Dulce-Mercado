@@ -19,6 +19,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="img/brand/favicon.png">
+    <link rel="apple-touch-icon" href="img/brand/favicon.png">
 </head>
 <body>
 
@@ -26,8 +28,11 @@
     <nav class="navbar" id="navbar">
         <div class="container navbar-inner">
             <a href="#" class="logo">
-                <span class="logo-word1">Dulce</span>
-                <span class="logo-word2">Mercado</span>
+                <img src="img/brand/logo.png" alt="Dulce Mercado" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-word1">Dulce</span>
+                    <span class="logo-word2">Mercado</span>
+                </div>
             </a>
             <div class="nav-links">
                 <a href="#productos">Productos</a>
@@ -87,20 +92,12 @@
             </div>
             <div class="hero-visual reveal reveal-d2">
                 <div class="hero-img-wrap">
-                    <img src="https://picsum.photos/seed/artisan-sweets-tray-2024/640/512.jpg"
-                         alt="Bandeja de dulces artesanales al por mayor"
-                         class="hero-img" loading="eager">
+                    <div class="hero-slider" id="heroSlider">
+                        <!-- Se cargan dinámicamente desde script.js -->
+                        <img src="img/productos/alfajor-ganache.png" alt="Alfajores Artesanales" class="hero-slide active">
+                    </div>
                 </div>
                 <div class="hero-frame"></div>
-                <div class="hero-float">
-                    <div class="hero-float-icon">
-                        <i data-lucide="trending-up" style="width:20px;height:20px;"></i>
-                    </div>
-                    <div>
-                        <strong>+120 clientes activos</strong>
-                        <span>revendiendo en RM</span>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -288,9 +285,12 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="logo" style="margin-bottom:4px;">
-                        <span class="logo-word1" style="color:var(--warm-300);">Dulce</span>
-                        <span class="logo-word2">Mercado</span>
+                    <div class="logo" style="margin-bottom:12px;">
+                        <img src="img/brand/logo.png" alt="Dulce Mercado" class="logo-img">
+                        <div class="logo-text">
+                            <span class="logo-word1" style="color:var(--warm-300);">Dulce</span>
+                            <span class="logo-word2">Mercado</span>
+                        </div>
                     </div>
                     <p>Proveedor mayorista de dulces artesanales en la Región Metropolitana, Chile.</p>
                 </div>

@@ -160,22 +160,38 @@ input, textarea { font-family:inherit; }
 }
 .logo {
     display: flex;
-    align-items: baseline;
-    gap: 2px;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+.logo-img {
+    height: 48px;
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.logo-text {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    line-height: 1;
 }
 .logo-word1 {
     font-family: var(--serif);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: var(--dark);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
 }
 .logo-word2 {
     font-family: var(--serif);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: var(--gold-500);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
+}
+.logo:hover .logo-img {
+    transform: scale(1.05);
 }
 .nav-links { display:flex; align-items:center; gap:36px; }
 .nav-links a {
@@ -410,16 +426,36 @@ input, textarea { font-family:inherit; }
     aspect-ratio: 5/4;
     object-fit: cover;
     display: block;
+    position: relative;
+    z-index: 2;
+}
+
+/* CAROUSEL HERO */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 5/4;
+    z-index: 2;
+}
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.hero-slide.active {
+    opacity: 1;
 }
 .hero-frame {
     position: absolute;
-    top: -16px;
-    right: -16px;
-    width: calc(100% + 8px);
-    height: calc(100% + 8px);
+    inset: -20px;
     border: 1.5px solid rgba(212,160,48,0.2);
     border-radius: calc(var(--radius-xl) + 4px);
     pointer-events: none;
+    z-index: 1;
 }
 .hero-float {
     position: absolute;
@@ -970,6 +1006,19 @@ input, textarea { font-family:inherit; }
     grid-template-columns: 1.2fr 1fr 1fr 1fr;
     gap: 48px;
     margin-bottom: 48px;
+}
+.footer-brand .logo-img {
+    height: 56px;
+    margin-bottom: 0;
+}
+.footer-brand .logo {
+    margin-bottom: 20px;
+}
+.footer-brand .logo-word1 {
+    font-size: 1.8rem;
+}
+.footer-brand .logo-word2 {
+    font-size: 1.8rem;
 }
 .footer-brand p {
     font-size: 0.82rem;

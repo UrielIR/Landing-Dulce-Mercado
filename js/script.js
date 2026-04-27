@@ -3,60 +3,92 @@
    ============================================ */
 const PRODUCTS = [
     {
-        id:1,
-        name:"Bandeja de Alfajores Artesanales",
-        desc:"Alfajores de maicena rellenos con dulce de leche. Cobertura de azúcar impalpable. Presentación en bandeja.",
-        qty:"20 unidades",
-        price:12990,
-        tag:"Más vendido",
-        image:"https://picsum.photos/seed/alfajores-maicena-band/640/440.jpg"
+        id: 1,
+        name: "Alfajor Clásico",
+        desc: "Tradicional alfajor relleno con generoso dulce de leche artesanal. Un clásico que encanta a todos.",
+        qty: "25 unidades",
+        price: 11990,
+        tag: "Más vendido",
+        image: "img/productos/alfajor-clasico.png"
     },
     {
-        id:2,
-        name:"Pack de Bombones Surtidos",
-        desc:"Selección de bombones rellenos: nuez, coco, frutilla y manjar. Chocolate belga de cobertura.",
-        qty:"30 unidades",
-        price:15990,
-        tag:"Popular",
-        image:"https://picsum.photos/seed/bombones-variedad-box/640/440.jpg"
+        id: 2,
+        name: "Alfajor Ganache de Chocolate",
+        desc: "Exquisito alfajor relleno con una cremosa ganache de chocolate semi-amargo. Sabor intenso y premium.",
+        qty: "25 unidades",
+        price: 13990,
+        tag: "Popular",
+        image: "img/productos/alfajor-ganache.png"
     },
     {
-        id:3,
-        name:"Caja de Chocolates Macizos",
-        desc:"Chocolates macizos de diferentes porcentajes de cacao. 50%, 70% y leche. Caja premium.",
-        qty:"24 unidades",
-        price:18990,
-        tag:"Premium",
-        image:"https://picsum.photos/seed/choco-macizo-premium/640/440.jpg"
+        id: 3,
+        name: "Alfajor Manjar Maracuyá",
+        desc: "Fusión perfecta entre el dulzor del manjar y el toque ácido del maracuyá real. Una experiencia única.",
+        qty: "25 unidades",
+        price: 13990,
+        tag: "Nuevo",
+        image: "img/productos/alfajor-maracuya.png"
     },
     {
-        id:4,
-        name:"Bandeja de Alfajores de Chocolate",
-        desc:"Alfajores con tapa de chocolate semi-amargo y relleno de dulce de leche. Alto impacto visual.",
-        qty:"20 unidades",
-        price:14990,
-        tag:null,
-        image:"https://picsum.photos/seed/alfajor-choco-dark/640/440.jpg"
+        id: 4,
+        name: "Trufas Artesanales",
+        desc: "Suaves trufas de chocolate elaboradas con ingredientes seleccionados. Textura irresistible que se funde en el paladar.",
+        qty: "30 unidades",
+        price: 6490,
+        tag: null,
+        image: "img/productos/trufas.png"
     },
     {
-        id:5,
-        name:"Pack de Trufas Artesanales",
-        desc:"Trufas de chocolate con center de frambuesa, lúcuma y manjar. Crema y textura irresistible.",
-        qty:"40 unidades",
-        price:16990,
-        tag:"Nuevo",
-        image:"https://picsum.photos/seed/trufas-frutas-pack/640/440.jpg"
+        id: 5,
+        name: "Cocadas Tradicionales",
+        desc: "Clásicas cocadas con el sabor auténtico del coco natural y la dulzura justa. Ideales para compartir.",
+        qty: "30 unidades",
+        price: 4990,
+        tag: null,
+        image: "img/productos/cocadas.png"
     },
     {
-        id:6,
-        name:"Caja de Dulces de Leche",
-        desc:"Mini dulces de leche bañados en chocolate. Ideales para punto de venta impulsivo. Caja display.",
-        qty:"30 unidades",
-        price:11990,
-        tag:null,
-        image:"https://picsum.photos/seed/dulce-leche-mini-box/640/440.jpg"
+        id: 6,
+        name: "Cuchuflí Relleno",
+        desc: "Barquillos crujientes rellenos con abundante dulce de leche de campo. El favorito de grandes y chicos.",
+        qty: "30 unidades",
+        price: 5490,
+        tag: null,
+        image: "img/productos/cuchufli.png"
     }
 ];
+
+/* ============================================
+   CONFIGURACIÓN HERO CAROUSEL
+   ============================================ */
+const HERO_IMAGES = [
+    "img/productos/alfajor-ganache.png",
+    "img/productos/alfajor-clasico.png",
+    "img/productos/alfajor-maracuya.png",
+    "img/productos/trufas.png",
+    "img/productos/cocadas.png",
+    "img/productos/cuchufli.png"
+];
+
+function initHeroSlider() {
+    const slider = document.getElementById('heroSlider');
+    if (!slider) return;
+
+    // Renderizamos las imágenes del carrusel
+    slider.innerHTML = HERO_IMAGES.map((img, i) => 
+        `<img src="${img}" alt="Producto Dulce Mercado" class="hero-slide ${i===0?'active':''}">`
+    ).join('');
+
+    const slides = slider.querySelectorAll('.hero-slide');
+    if (slides.length <= 1) return;
+
+    let current = 0;
+    setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+    }, 5000);
+}
 
 const SHIPPING = 3990;
 let cart = [];
@@ -315,5 +347,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     renderProducts();
     updateUI();
     initReveal();
+    initHeroSlider();
     lucide.createIcons();
 });
