@@ -92,7 +92,7 @@ function initHeroSlider() {
 
 const SHIPPING = 3990;
 const MP_PUBLIC_KEY = "APP_USR-1c815107-1d63-4272-b2d6-441d47cab54b";
-const MP_BACKEND_URL = "http://localhost:3000";
+const MP_BACKEND_URL = "/api";
 let cart = [];
 let mp = null;
 

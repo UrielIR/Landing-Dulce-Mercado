@@ -72,3 +72,18 @@ Abre `index.html` en un navegador web moderno.
 5. Sirve el sitio por HTTP para que el checkout funcione correctamente.
 6. El backend enviará un correo a `dulceconexion@zohomail.com` cada vez que se genere una preferencia de pago.
 7. Si agregas un formulario de contacto, puedes usar el endpoint `/send_contact` para enviar consultas directamente a tu correo.
+
+## Despliegue en Vercel
+1. Conecta el repositorio a Vercel.
+2. No necesitas build command si usas `api/` para backend y archivos estáticos como `index.html`.
+3. Agrega estas variables de entorno en Vercel:
+   - `MP_ACCESS_TOKEN`
+   - `MP_PUBLIC_KEY`
+   - `EMAIL_USER`
+   - `EMAIL_PASS`
+   - `EMAIL_TO`
+   - `EMAIL_FROM`
+4. El backend estará disponible en:
+   - `/api/create_preference`
+   - `/api/send_contact`
+5. El frontend ya usa `/api` como backend, así que el deploy debe funcionar sin cambios adicionales en el código.
