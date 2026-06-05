@@ -57,3 +57,18 @@ Esta es una landing page para Dulce Mercado, un proveedor mayorista de dulces ar
 
 ## Cómo Ejecutar
 Abre `index.html` en un navegador web moderno.
+
+## Integración con Mercado Pago
+1. Copia `.env.example` a `.env`.
+2. Coloca tu `MP_ACCESS_TOKEN` y `MP_PUBLIC_KEY` en `.env`.
+3. En la carpeta del proyecto, instala dependencias:
+   ```bash
+   npm install
+   ```
+4. Ejecuta el backend de Mercado Pago y correo:
+   ```bash
+   npm start
+   ```
+5. Sirve el sitio por HTTP para que el checkout funcione correctamente.
+6. El backend enviará un correo a `dulceconexion@zohomail.com` cada vez que se genere una preferencia de pago.
+7. Si agregas un formulario de contacto, puedes usar el endpoint `/send_contact` para enviar consultas directamente a tu correo.

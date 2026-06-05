@@ -91,7 +91,10 @@ function initHeroSlider() {
 }
 
 const SHIPPING = 3990;
+const MP_PUBLIC_KEY = "APP_USR-1c815107-1d63-4272-b2d6-441d47cab54b";
+const MP_BACKEND_URL = "http://localhost:3000";
 let cart = [];
+let mp = null;
 
 /* ============================================
    LOCALSTORAGE
@@ -100,6 +103,43 @@ function loadCart() {
     try { const s = localStorage.getItem('dm_cart'); if(s) cart = JSON.parse(s); } catch(e){ cart=[]; }
 }
 function saveCart() { localStorage.setItem('dm_cart', JSON.stringify(cart)); }
+
+function initMercadoPago() {
+    if (window.MercadoPago) {
+        mp = new MercadoPago(MP_PUBLIC_KEY, { locale: 'es-CL' });
+    }
+}
+
+function buildPaymentItems() {
+    const items = cart.map(item => ({
+        title: item.name,
+        quantity: item.qty,
+        unit_price: item.price,
+        currency_id: 'CLP'
+    }));
+    if (cart.length) {
+        items.push({
+            title: 'Despacho Región Metropolitana',
+            quantity: 1,
+            unit_price: SHIPPING,
+            currency_id: 'CLP'
+        });
+    }
+    return items;
+}
+
+async function createPreference(payload) {
+    const res = await fetch(`${MP_BACKEND_URL}/create_preference`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    });
+    if (!res.ok) {
+        const error = await res.json().catch(() => ({ message: 'Error al crear la preferencia' }));
+        throw new Error(error.message || 'Error al crear la preferencia');
+    }
+    return res.json();
+}
 
 /* ============================================
    RENDER PRODUCTOS
@@ -259,7 +299,7 @@ function closeCheckout() {
     document.body.style.overflow='';
 }
 
-function processPayment(e) {
+async function processPayment(e) {
     e.preventDefault();
     let ok=true;
     const n=document.getElementById('cName'),
@@ -278,20 +318,43 @@ function processPayment(e) {
 
     const btn = document.getElementById('btnPay');
     btn.disabled=true;
-    btn.innerHTML=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Procesando...`;
+    btn.innerHTML=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Creando pago...`;
 
-    setTimeout(()=>{
-        cart=[]; saveCart(); updateUI();
-        document.getElementById('checkoutForm').reset();
+    const currentUrl = window.location.href.split('#')[0];
+    const payload = {
+        items: buildPaymentItems(),
+        payer: {
+            name: n.value.trim(),
+            email: em.value.trim(),
+            phone: {
+                area_code: '56',
+                number: ph.value.replace(/\D/g,'')
+            }
+        },
+        shipments: { cost: SHIPPING, mode: 'not_specified' },
+        back_urls: {
+            success: currentUrl,
+            failure: currentUrl,
+            pending: currentUrl
+        },
+        auto_return: 'approved',
+        external_reference: em.value.trim()
+    };
+
+    try {
+        const data = await createPreference(payload);
+        if (data.init_point) {
+            window.location.href = data.init_point;
+            return;
+        }
+        throw new Error('No se pudo obtener la URL de pago.');
+    } catch (error) {
+        console.error(error);
+        showToast('No se pudo iniciar el pago. Revisa tu conexión o intenta más tarde.');
         btn.disabled=false;
         btn.innerHTML='<i data-lucide="lock" style="width:17px;height:17px;"></i> Pagar de forma segura';
         lucide.createIcons();
-        closeCheckout();
-        setTimeout(()=>{
-            document.getElementById('successOverlay').classList.add('open');
-            document.body.style.overflow='hidden';
-        },380);
-    },2200);
+    }
 }
 
 function closeSuccess() {
@@ -348,5 +411,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     updateUI();
     initReveal();
     initHeroSlider();
+    initMercadoPago();
     lucide.createIcons();
 });
