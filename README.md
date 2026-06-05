@@ -1,6 +1,6 @@
-# Landing Page - Dulce Mercado
+# Landing Page - Dulce Conexion
 
-Esta es una landing page para Dulce Mercado, un proveedor mayorista de dulces artesanales en Chile.
+Esta es una landing page para Dulce Conexion, un proveedor mayorista de dulces artesanales en Chile.
 
 ## Estructura del Proyecto
 

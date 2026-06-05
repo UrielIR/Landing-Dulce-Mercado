@@ -2,11 +2,11 @@
    PRODUCTOS
    ============================================ */
 const PRODUCTS = [
-    {
-        id: 1,
-        name: "Alfajor Clásico",
-        desc: "Tradicional alfajor relleno con generoso dulce de leche artesanal. Un clásico que encanta a todos.",
-        qty: "25 unidades",
+    
+    // Renderizamos las imágenes del carrusel
+    slider.innerHTML = HERO_IMAGES.map((img, i) => 
+        `<img src="${img}" alt="Producto Dulce Conexion" class="hero-slide ${i===0?'active':''}">
+    `).join('');
         price: 11990,
         tag: "Más vendido",
         image: "img/productos/alfajor-clasico.png"
