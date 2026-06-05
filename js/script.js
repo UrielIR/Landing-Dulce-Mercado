@@ -2,11 +2,11 @@
    PRODUCTOS
    ============================================ */
 const PRODUCTS = [
-    
-    // Renderizamos las imágenes del carrusel
-    slider.innerHTML = HERO_IMAGES.map((img, i) => 
-        `<img src="${img}" alt="Producto Dulce Conexion" class="hero-slide ${i===0?'active':''}">
-    `).join('');
+    {
+        id: 1,
+        name: "Alfajor Clásico",
+        desc: "Tradicional alfajor relleno con generoso dulce de leche artesanal. Un clásico que encanta a todos.",
+        qty: "25 unidades",
         price: 11990,
         tag: "Más vendido",
         image: "img/productos/alfajor-clasico.png"
@@ -75,8 +75,8 @@ function initHeroSlider() {
     if (!slider) return;
 
     // Renderizamos las imágenes del carrusel
-    slider.innerHTML = HERO_IMAGES.map((img, i) => 
-        `<img src="${img}" alt="Producto Dulce Mercado" class="hero-slide ${i===0?'active':''}">`
+    slider.innerHTML = HERO_IMAGES.map((img, i) =>
+        `<img src="${img}" alt="Producto Dulce Conexion" class="hero-slide ${i===0?'active':''}">`
     ).join('');
 
     const slides = slider.querySelectorAll('.hero-slide');
@@ -146,6 +146,7 @@ async function createPreference(payload) {
    ============================================ */
 function renderProducts() {
     const g = document.getElementById('productGrid');
+    if(!g) return;
     g.innerHTML = PRODUCTS.map((p,i) => `
         <div class="product-card reveal reveal-d${(i%3)+1}">
             <div class="product-img-wrap">
@@ -169,7 +170,7 @@ function renderProducts() {
             </div>
         </div>
     `).join('');
-        safeCreateIcons();
+    safeCreateIcons();
 }
 
 /* ============================================
@@ -186,11 +187,11 @@ function addToCart(id) {
     if(b){
         b.classList.add('added');
         b.innerHTML='<i data-lucide="check" style="width:17px;height:17px;"></i> Agregado';
-            safeCreateIcons();
+        safeCreateIcons();
         setTimeout(()=>{
             b.classList.remove('added');
             b.innerHTML='<i data-lucide="plus" style="width:17px;height:17px;"></i> Agregar al carrito';
-                safeCreateIcons();
+            safeCreateIcons();
         },1400);
     }
 }
@@ -226,25 +227,26 @@ function updateUI() {
     });
 
     // Count in header
-    document.getElementById('cartCount').textContent = c>0 ? `(${c})` : '';
+    const cartCountEl = document.getElementById('cartCount');
+    if(cartCountEl) cartCountEl.textContent = c>0 ? `(${c})` : '';
 
     const body = document.getElementById('cartBody');
     const foot = document.getElementById('cartFoot');
 
     if(!cart.length) {
-        body.innerHTML = `
+        if(body) body.innerHTML = `
             <div class="cart-empty">
                 <div class="cart-empty-icon"><i data-lucide="shopping-bag" style="width:26px;height:26px;"></i></div>
                 <p>Tu carrito está vacío</p>
                 <p>Agrega productos para comenzar</p>
             </div>`;
-        foot.style.display='none';
-            safeCreateIcons();
+        if(foot) foot.style.display='none';
+        safeCreateIcons();
         return;
     }
 
-    foot.style.display='block';
-    body.innerHTML = cart.map(i=>`
+    if(foot) foot.style.display='block';
+    if(body) body.innerHTML = cart.map(i=>`
         <div class="cart-item">
             <img src="${i.image}" alt="${i.name}" class="ci-img">
             <div class="ci-info">
@@ -262,23 +264,30 @@ function updateUI() {
         </div>
     `).join('');
 
-    document.getElementById('cfSubtotal').textContent = '$'+t.toLocaleString('es-CL');
-    document.getElementById('cfShip').textContent = c>0 ? '$'+SHIPPING.toLocaleString('es-CL') : '$0';
-    document.getElementById('cfTotal').textContent = '$'+ft.toLocaleString('es-CL');
-        safeCreateIcons();
+    const cfSubtotal = document.getElementById('cfSubtotal');
+    const cfShip = document.getElementById('cfShip');
+    const cfTotal = document.getElementById('cfTotal');
+    if(cfSubtotal) cfSubtotal.textContent = '$'+t.toLocaleString('es-CL');
+    if(cfShip) cfShip.textContent = c>0 ? '$'+SHIPPING.toLocaleString('es-CL') : '$0';
+    if(cfTotal) cfTotal.textContent = '$'+ft.toLocaleString('es-CL');
+    safeCreateIcons();
 }
 
 /* ============================================
    CART OPEN / CLOSE
    ============================================ */
 function openCart() {
-    document.getElementById('cartOverlay').classList.add('open');
-    document.getElementById('cartSidebar').classList.add('open');
+    const overlay = document.getElementById('cartOverlay');
+    const sidebar = document.getElementById('cartSidebar');
+    if(overlay) overlay.classList.add('open');
+    if(sidebar) sidebar.classList.add('open');
     document.body.style.overflow='hidden';
 }
 function closeCart() {
-    document.getElementById('cartOverlay').classList.remove('open');
-    document.getElementById('cartSidebar').classList.remove('open');
+    const overlay = document.getElementById('cartOverlay');
+    const sidebar = document.getElementById('cartSidebar');
+    if(overlay) overlay.classList.remove('open');
+    if(sidebar) sidebar.classList.remove('open');
     document.body.style.overflow='';
 }
 
@@ -288,14 +297,17 @@ function closeCart() {
 function openCheckout() {
     if(!cart.length) return;
     closeCart();
-    document.getElementById('coTotal').textContent = '$'+(total()+SHIPPING).toLocaleString('es-CL');
+    const coTotal = document.getElementById('coTotal');
+    if(coTotal) coTotal.textContent = '$'+(total()+SHIPPING).toLocaleString('es-CL');
     setTimeout(()=>{
-        document.getElementById('checkoutOverlay').classList.add('open');
+        const overlay = document.getElementById('checkoutOverlay');
+        if(overlay) overlay.classList.add('open');
         document.body.style.overflow='hidden';
     },380);
 }
 function closeCheckout() {
-    document.getElementById('checkoutOverlay').classList.remove('open');
+    const overlay = document.getElementById('checkoutOverlay');
+    if(overlay) overlay.classList.remove('open');
     document.body.style.overflow='';
 }
 
@@ -307,18 +319,20 @@ async function processPayment(e) {
           em=document.getElementById('cEmail'),
           ad=document.getElementById('cAddr');
 
-    [n,ph,em,ad].forEach(i=>i.classList.remove('err'));
+    [n,ph,em,ad].forEach(i=>{ if(i) i.classList.remove('err'); });
     document.querySelectorAll('.fg-err').forEach(i=>i.classList.remove('show'));
 
-    if(!n.value.trim()){ n.classList.add('err'); document.getElementById('eName').classList.add('show'); ok=false; }
-    if(!ph.value.trim()||ph.value.replace(/\D/g,'').length<8){ ph.classList.add('err'); document.getElementById('ePhone').classList.add('show'); ok=false; }
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())){ em.classList.add('err'); document.getElementById('eEmail').classList.add('show'); ok=false; }
-    if(!ad.value.trim()){ ad.classList.add('err'); document.getElementById('eAddr').classList.add('show'); ok=false; }
+    if(!n || !n.value.trim()){ if(n) n.classList.add('err'); const eName = document.getElementById('eName'); if(eName) eName.classList.add('show'); ok=false; }
+    if(!ph || !ph.value.trim()||ph.value.replace(/\D/g,'').length<8){ if(ph) ph.classList.add('err'); const ePhone = document.getElementById('ePhone'); if(ePhone) ePhone.classList.add('show'); ok=false; }
+    if(!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())){ if(em) em.classList.add('err'); const eEmail = document.getElementById('eEmail'); if(eEmail) eEmail.classList.add('show'); ok=false; }
+    if(!ad || !ad.value.trim()){ if(ad) ad.classList.add('err'); const eAddr = document.getElementById('eAddr'); if(eAddr) eAddr.classList.add('show'); ok=false; }
     if(!ok) return;
 
     const btn = document.getElementById('btnPay');
-    btn.disabled=true;
-    btn.innerHTML=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Creando pago...`;
+    if(btn){
+        btn.disabled=true;
+        btn.innerHTML=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Creando pago...`;
+    }
 
     const currentUrl = window.location.href.split('#')[0];
     const payload = {
@@ -351,14 +365,17 @@ async function processPayment(e) {
     } catch (error) {
         console.error(error);
         showToast('No se pudo iniciar el pago. Revisa tu conexión o intenta más tarde.');
-        btn.disabled=false;
-        btn.innerHTML='<i data-lucide="lock" style="width:17px;height:17px;"></i> Pagar de forma segura';
+        if(btn){
+            btn.disabled=false;
+            btn.innerHTML='<i data-lucide="lock" style="width:17px;height:17px;"></i> Pagar de forma segura';
+        }
         safeCreateIcons();
     }
 }
 
 function closeSuccess() {
-    document.getElementById('successOverlay').classList.remove('open');
+    const overlay = document.getElementById('successOverlay');
+    if(overlay) overlay.classList.remove('open');
     document.body.style.overflow='';
 }
 
@@ -367,6 +384,7 @@ function closeSuccess() {
    ============================================ */
 function showToast(msg) {
     const c = document.getElementById('toastBox');
+    if(!c) return;
     const t = document.createElement('div');
     t.className='toast';
     t.innerHTML=`<i data-lucide="check-circle" style="width:16px;height:16px;flex-shrink:0;color:var(--gold-400);"></i>${msg}`;
@@ -379,13 +397,19 @@ function showToast(msg) {
    NAVBAR SCROLL
    ============================================ */
 window.addEventListener('scroll', ()=>{
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY>20);
+    const navbar = document.getElementById('navbar');
+    if(navbar) navbar.classList.toggle('scrolled', window.scrollY>20);
 }, {passive:true});
 
 /* ============================================
    SCROLL REVEAL
    ============================================ */
 function initReveal() {
+    if(!('IntersectionObserver' in window)){
+        // Fallback: make elements visible
+        document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+        return;
+    }
     const obs = new IntersectionObserver(entries=>{
         entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
     }, {threshold:0.08, rootMargin:'0px 0px -30px 0px'});
@@ -403,9 +427,12 @@ function safeCreateIcons(){
    ============================================ */
 document.addEventListener('keydown', e=>{
     if(e.key!=='Escape') return;
-    if(document.getElementById('successOverlay').classList.contains('open')) closeSuccess();
-    else if(document.getElementById('checkoutOverlay').classList.contains('open')) closeCheckout();
-    else if(document.getElementById('cartSidebar').classList.contains('open')) closeCart();
+    const successOverlay = document.getElementById('successOverlay');
+    const checkoutOverlay = document.getElementById('checkoutOverlay');
+    const cartSidebar = document.getElementById('cartSidebar');
+    if(successOverlay && successOverlay.classList.contains('open')) closeSuccess();
+    else if(checkoutOverlay && checkoutOverlay.classList.contains('open')) closeCheckout();
+    else if(cartSidebar && cartSidebar.classList.contains('open')) closeCart();
 });
 
 /* ============================================
