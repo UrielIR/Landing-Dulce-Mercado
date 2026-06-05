@@ -169,7 +169,7 @@ function renderProducts() {
             </div>
         </div>
     `).join('');
-    lucide.createIcons();
+        safeCreateIcons();
 }
 
 /* ============================================
@@ -186,11 +186,11 @@ function addToCart(id) {
     if(b){
         b.classList.add('added');
         b.innerHTML='<i data-lucide="check" style="width:17px;height:17px;"></i> Agregado';
-        lucide.createIcons();
+            safeCreateIcons();
         setTimeout(()=>{
             b.classList.remove('added');
             b.innerHTML='<i data-lucide="plus" style="width:17px;height:17px;"></i> Agregar al carrito';
-            lucide.createIcons();
+                safeCreateIcons();
         },1400);
     }
 }
@@ -239,7 +239,7 @@ function updateUI() {
                 <p>Agrega productos para comenzar</p>
             </div>`;
         foot.style.display='none';
-        lucide.createIcons();
+            safeCreateIcons();
         return;
     }
 
@@ -265,7 +265,7 @@ function updateUI() {
     document.getElementById('cfSubtotal').textContent = '$'+t.toLocaleString('es-CL');
     document.getElementById('cfShip').textContent = c>0 ? '$'+SHIPPING.toLocaleString('es-CL') : '$0';
     document.getElementById('cfTotal').textContent = '$'+ft.toLocaleString('es-CL');
-    lucide.createIcons();
+        safeCreateIcons();
 }
 
 /* ============================================
@@ -353,7 +353,7 @@ async function processPayment(e) {
         showToast('No se pudo iniciar el pago. Revisa tu conexión o intenta más tarde.');
         btn.disabled=false;
         btn.innerHTML='<i data-lucide="lock" style="width:17px;height:17px;"></i> Pagar de forma segura';
-        lucide.createIcons();
+        safeCreateIcons();
     }
 }
 
@@ -371,7 +371,7 @@ function showToast(msg) {
     t.className='toast';
     t.innerHTML=`<i data-lucide="check-circle" style="width:16px;height:16px;flex-shrink:0;color:var(--gold-400);"></i>${msg}`;
     c.appendChild(t);
-    lucide.createIcons();
+    safeCreateIcons();
     setTimeout(()=>{ if(t.parentNode) t.remove(); },3000);
 }
 
@@ -390,6 +390,12 @@ function initReveal() {
         entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
     }, {threshold:0.08, rootMargin:'0px 0px -30px 0px'});
     document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+function safeCreateIcons(){
+    if(typeof lucide !== 'undefined' && lucide && typeof lucide.createIcons === 'function'){
+        try{ lucide.createIcons(); }catch(e){ console.warn('lucide.createIcons error', e); }
+    }
 }
 
 /* ============================================
@@ -412,5 +418,5 @@ document.addEventListener('DOMContentLoaded', ()=>{
     initReveal();
     initHeroSlider();
     initMercadoPago();
-    lucide.createIcons();
+    safeCreateIcons();
 });
